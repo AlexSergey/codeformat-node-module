@@ -15,7 +15,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  ignorePatterns: ['.eslintrc.cjs'],
+  ignorePatterns: ['.eslintrc.js'],
   plugins: ['import', 'unicorn', '@typescript-eslint', 'sort-keys-fix', 'file-extension-in-import-ts'],
   extends: [
     'airbnb-base',
@@ -98,19 +98,8 @@ module.exports = {
       'error',
       {
         selector: 'interface',
-        format: ['PascalCase'],
-        custom: {
-          regex: '.*Interface',
-          match: true,
-        },
-      },
-      {
-        selector: 'typeAlias',
-        format: ['PascalCase'],
-        custom: {
-          regex: '.*Type',
-          match: true,
-        },
+        prefix: ['I'],
+        format: ['UPPER_CASE', 'StrictPascalCase'],
       },
     ],
     '@typescript-eslint/ban-ts-comment': isDevelopment ? 'off' : 'error',
@@ -136,7 +125,7 @@ module.exports = {
     ],
     'import/prefer-default-export': 'off',
     'import/no-default-export': 'error',
-    'import/no-unresolved': ['error', { ignore: [ '\\.js$' ] }],
+    'import/no-unresolved': ['error', { ignore: ['\\.js$'] }],
 
     'unicorn/filename-case': [
       'error',
@@ -152,6 +141,6 @@ module.exports = {
     'unicorn/empty-brace-spaces': 'error',
     'unicorn/custom-error-definition': 'error',
 
-    'file-extension-in-import-ts/file-extension-in-import-ts': 'error' //[ 'error', 'always', { extensionsMapping: {a: 'b'}}]
+    'file-extension-in-import-ts/file-extension-in-import-ts': 'error',
   },
 };
