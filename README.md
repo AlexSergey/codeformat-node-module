@@ -4,7 +4,7 @@ This is boilerplate to use eslint + best practice configs and Prettier.
 
 The main goal is make auto-formatting IDE process.
 
-*This project use ES modules (type "module").*
+_This project use ES modules (type "module")._
 
 ## IDE Integration
 
@@ -20,7 +20,7 @@ We can set up our IDE to fix all lint rules and format code by Prettier.
 
 - Set Manual Configuration and set folder to "node_modules/eslint" in your project
 - Set working directories to root of your project
-- Set path to your *.eslintrc.js* file
+- Set path to your _.eslintrc.js_ file
 - Select "Run eslint --fix on save"
 
 4. Find Prettier.
@@ -68,6 +68,7 @@ Then add settings:
 ```json
 {
   "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
   "editor.tabSize": 2,
   "eslint.alwaysShowStatus": true,
   "eslint.format.enable": true,
@@ -76,7 +77,6 @@ Then add settings:
   "files.trimTrailingWhitespace": true,
   "files.trimFinalNewlines": true,
   "files.eol": "\n",
-  "terminal.integrated.defaultProfile.windows": "Git Bash",
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "tslint.enable": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
