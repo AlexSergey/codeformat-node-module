@@ -8,8 +8,8 @@
       "es2022",
       "dom"
     ],
-    "module": "commonjs",
-    "target": "es2022",
+    "module": "es2022",
+    "target": "ES2022",
     "moduleResolution": "node",
     "esModuleInterop": true,
 
