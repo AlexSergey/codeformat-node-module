@@ -1,7 +1,11 @@
+const fs = require('fs');
+
 const defaultEnv = 'production';
 const supportedEnvs = ['development', 'production'];
 const currentEnv = supportedEnvs.includes(process.env.NODE_ENV) ? process.env.NODE_ENV : defaultEnv;
 const isDevelopment = currentEnv === 'development';
+
+const prettierConfig = JSON.parse(fs.readFileSync('./.prettierrc', 'utf8'));
 
 module.exports = {
   root: true,
@@ -17,6 +21,15 @@ module.exports = {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
+  },
+  // eslint-plugin-perfectionist conflicts
+  // https://github.com/azat-io/eslint-plugin-perfectionist#%EF%B8%8F-troubleshooting
+  rules: {
+    'import/order': 'off',
+    'sort-imports': 'off',
+    'sort-keys': 'off',
+    '@typescript-eslint/adjacent-overload-signatures': 'off',
+    '@typescript-eslint/sort-type-constituents': 'off',
   },
   overrides: [
     /*
@@ -34,10 +47,10 @@ module.exports = {
         'import',
         'unicorn',
         '@typescript-eslint',
-        'sort-keys-fix',
         'file-extension-in-import-ts',
         'check-file',
         'jest-formatting',
+        'perfectionist',
       ],
       extends: [
         'eslint:recommended',
@@ -49,6 +62,7 @@ module.exports = {
         'plugin:import/typescript',
         'prettier',
         'plugin:prettier/recommended',
+        'plugin:perfectionist/recommended-natural',
       ],
       rules: {
         'no-unused-vars': 'off',
@@ -64,18 +78,7 @@ module.exports = {
         'no-underscore-dangle': 'off',
         'newline-before-return': 'error',
 
-        'prettier/prettier': [
-          'error',
-          {
-            singleQuote: true,
-            useTabs: false,
-            semi: true,
-            trailingComma: 'all',
-            bracketSpacing: true,
-            printWidth: 120,
-            endOfLine: 'lf',
-          },
-        ],
+        'prettier/prettier': ['error', prettierConfig],
 
         '@typescript-eslint/ban-types': 'off',
         '@typescript-eslint/no-unused-vars': isDevelopment
@@ -106,26 +109,7 @@ module.exports = {
         ],
         '@typescript-eslint/ban-ts-comment': isDevelopment ? 'off' : 'error',
 
-        'sort-keys-fix/sort-keys-fix': 'warn',
-
         'import/no-extraneous-dependencies': 'error',
-        'import/order': [
-          'error',
-          {
-            alphabetize: {
-              order: 'asc',
-            },
-            groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object'],
-            'newlines-between': 'always',
-            pathGroups: [
-              {
-                group: 'internal',
-                pattern: '@',
-                position: 'after',
-              },
-            ],
-          },
-        ],
         'import/prefer-default-export': 'off',
         'import/no-default-export': 'error',
         'import/no-unresolved': ['error', { ignore: ['\\.js$'], caseSensitiveStrict: true }],
