@@ -51,6 +51,7 @@ module.exports = {
         'check-file',
         'jest-formatting',
         'perfectionist',
+        'regexp',
       ],
       extends: [
         'eslint:recommended',
@@ -63,6 +64,7 @@ module.exports = {
         'prettier',
         'plugin:prettier/recommended',
         'plugin:perfectionist/recommended-natural',
+        'plugin:regexp/recommended',
       ],
       rules: {
         'no-unused-vars': 'off',
@@ -77,6 +79,7 @@ module.exports = {
         'no-param-reassign': 'off',
         'no-underscore-dangle': 'off',
         'newline-before-return': 'error',
+        'no-warning-comments': 'warn',
 
         'prettier/prettier': ['error', prettierConfig],
 
