@@ -11,6 +11,7 @@ import globals from 'globals';
 import eslintTs from 'typescript-eslint';
 
 const ignores = [
+  '**/*.d.ts',
   '*.d.ts',
   'node_modules',
   'logs',
