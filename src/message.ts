@@ -1,3 +1,3 @@
-import type { IMessage } from './message.interface';
+import type { Message } from './message.interface';
 
-export const helloWorld = (): IMessage => ({ msg: `Hello world !` });
+export const helloWorld = (): Message => ({ msg: `Hello world !` });
